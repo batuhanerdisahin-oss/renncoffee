@@ -12,6 +12,7 @@ import {
   getBranches,
   updateBranch,
   getFranchiseApplications,
+  updateFranchiseApplication,
   getContactMessages,
   FranchiseApplication,
   ContactMessage
@@ -40,7 +41,9 @@ import {
   Phone,
   Mail,
   Home,
-  AlertCircle
+  AlertCircle,
+  Download,
+  Filter
 } from "lucide-react";
 
 export default function AdminPage() {
@@ -78,6 +81,79 @@ export default function AdminPage() {
   // Save feedback state
   const [saveStatus, setSaveStatus] = useState<string>("");
 
+  // Franchise Applications Filter States
+  const [appFilterSearch, setAppFilterSearch] = useState("");
+  const [appFilterModel, setAppFilterModel] = useState("Tümü");
+  const [appFilterStatus, setAppFilterStatus] = useState("Tümü");
+  const [appFilterBudget, setAppFilterBudget] = useState("Tümü");
+  const [internalNotesState, setInternalNotesState] = useState<Record<string, string>>({});
+  const [notesSaveStatus, setNotesSaveStatus] = useState<Record<string, string>>({});
+
+  const handleAppStatusChange = async (appId: string, newStatus: any) => {
+    await updateFranchiseApplication(appId, { status: newStatus });
+    setApplications((prev) =>
+      prev.map((a) => (a.id === appId ? { ...a, status: newStatus } : a))
+    );
+  };
+
+  const handleSaveInternalNote = async (appId: string) => {
+    const note = internalNotesState[appId] || "";
+    await updateFranchiseApplication(appId, { internalNotes: note });
+    setApplications((prev) =>
+      prev.map((a) => (a.id === appId ? { ...a, internalNotes: note } : a))
+    );
+    setNotesSaveStatus((prev) => ({ ...prev, [appId]: "Kaydedildi" }));
+    setTimeout(() => {
+      setNotesSaveStatus((prev) => ({ ...prev, [appId]: "" }));
+    }, 2500);
+  };
+
+  const exportApplicationsCSV = () => {
+    const headers = [
+      "Ad Soyad",
+      "Telefon",
+      "E-posta",
+      "Yaşadığı Şehir",
+      "Hedef Şehir",
+      "Lokasyon",
+      "Konsept",
+      "Bütçe",
+      "Zamanlama",
+      "İşletme Deneyimi",
+      "Durum",
+      "Aday Notu",
+      "İç Notlar",
+      "Tarih"
+    ];
+
+    const rows = filteredApplications.map((a) => [
+      `"${(a.fullName || "").replace(/"/g, '""')}"`,
+      `"${(a.phone || "").replace(/"/g, '""')}"`,
+      `"${(a.email || "").replace(/"/g, '""')}"`,
+      `"${(a.currentCity || "").replace(/"/g, '""')}"`,
+      `"${(a.city || "").replace(/"/g, '""')}"`,
+      `"${(a.targetLocation || "").replace(/"/g, '""')}"`,
+      `"${(a.concept || "").replace(/"/g, '""')}"`,
+      `"${(a.budget || "").replace(/"/g, '""')}"`,
+      `"${(a.timeline || "").replace(/"/g, '""')}"`,
+      `"${(a.experience || "").replace(/"/g, '""')}"`,
+      `"${(a.status || "").replace(/"/g, '""')}"`,
+      `"${(a.message || "").replace(/"/g, '""')}"`,
+      `"${(a.internalNotes || "").replace(/"/g, '""')}"`,
+      `"${(a.createdAt ? new Date(a.createdAt).toLocaleDateString("tr-TR") : "").replace(/"/g, '""')}"`
+    ]);
+
+    const csvContent = "\uFEFF" + [headers.join(";"), ...rows.map((r) => r.join(";"))].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `renn-coffee-franchise-basvurulari-${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   useEffect(() => {
     // Check session login
     if (typeof window !== "undefined") {
@@ -108,6 +184,35 @@ export default function AdminPage() {
     setApplications(a);
     setMessages(m);
   };
+
+  const filteredApplications = React.useMemo(() => {
+    return applications.filter((app) => {
+      // Search
+      const searchMatch =
+        !appFilterSearch ||
+        app.fullName?.toLowerCase().includes(appFilterSearch.toLowerCase()) ||
+        app.city?.toLowerCase().includes(appFilterSearch.toLowerCase()) ||
+        app.phone?.toLowerCase().includes(appFilterSearch.toLowerCase()) ||
+        app.email?.toLowerCase().includes(appFilterSearch.toLowerCase()) ||
+        app.targetLocation?.toLowerCase().includes(appFilterSearch.toLowerCase());
+
+      // Model
+      const modelMatch =
+        appFilterModel === "Tümü" ||
+        (app.concept && app.concept.toLowerCase().includes(appFilterModel.toLowerCase()));
+
+      // Status
+      const statusMatch =
+        appFilterStatus === "Tümü" || app.status === appFilterStatus;
+
+      // Budget
+      const budgetMatch =
+        appFilterBudget === "Tümü" ||
+        (app.budget && app.budget.includes(appFilterBudget));
+
+      return searchMatch && modelMatch && statusMatch && budgetMatch;
+    });
+  }, [applications, appFilterSearch, appFilterModel, appFilterStatus, appFilterBudget]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -644,68 +749,304 @@ export default function AdminPage() {
           {/* 4. APPLICATIONS TAB */}
           {activeTab === "applications" && (
             <div className="space-y-6">
-              <div>
-                <h2 className="font-serif-luxury text-3xl font-bold text-[#20150F]">
-                  Franchise Başvuruları ({applications.length})
-                </h2>
-                <p className="text-sm text-[#73675C] mt-1">
-                  Web sitesi üzerinden form dolduran yatırımcı adaylarının detayları.
-                </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h2 className="font-serif-luxury text-3xl font-bold text-[#20150F]">
+                    Franchise Başvuruları ({filteredApplications.length} / {applications.length})
+                  </h2>
+                  <p className="text-sm text-[#73675C] mt-1">
+                    Girişimci adaylarının detayları, yatırım tercihleri ve operasyonel süreç yönetimi.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={exportApplicationsCSV}
+                  className="px-5 py-2.5 rounded-full text-xs font-semibold bg-[#20150F] text-[#FAF7F2] hover:bg-[#38261C] transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer self-start sm:self-auto"
+                >
+                  <Download size={14} />
+                  <span>Excel / CSV Olarak İndir</span>
+                </button>
               </div>
 
-              <div className="space-y-4">
-                {applications.map((app) => (
-                  <div key={app.id || app.fullName} className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E3D6C8] shadow-xs space-y-4">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F0E6D8] pb-4">
-                      <div>
-                        <span className="text-xs uppercase tracking-wider text-[#A5784C] font-semibold">
-                          Aday Bilgisi
-                        </span>
-                        <h3 className="font-serif-luxury text-2xl font-bold text-[#20150F]">
-                          {app.fullName}
-                        </h3>
-                        {app.concept && (
-                          <span className="inline-block mt-1 px-3 py-0.5 rounded-full bg-[#EFE6DC] text-[#8C6239] text-[11px] font-semibold border border-[#DECDBB]">
-                            {app.concept}
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-full bg-[#F4EFE6] text-[#20150F] text-xs font-bold">
-                          {app.budget}
-                        </span>
-                        <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold">
-                          {app.status === "reviewed" ? "İncelendi" : "Beklemede"}
-                        </span>
-                      </div>
-                    </div>
+              {/* Filters Bar */}
+              <div className="p-5 rounded-2xl bg-white border border-[#E3D6C8] shadow-xs space-y-4">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#20150F] uppercase tracking-wider">
+                  <Filter size={14} className="text-[#C59A6F]" />
+                  <span>Başvuru Filtreleri</span>
+                </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-                      <div>
-                        <span className="text-[#8A796C] block">Hedef Şehir / İlçe:</span>
-                        <span className="font-semibold text-[#20150F] text-sm mt-0.5 block">{app.city} {app.targetLocation && `— ${app.targetLocation}`}</span>
-                      </div>
-                      <div>
-                        <span className="text-[#8A796C] block">Telefon:</span>
-                        <a href={`tel:${app.phone}`} className="font-semibold text-[#20150F] text-sm mt-0.5 block hover:text-[#C59A6F]">{app.phone}</a>
-                      </div>
-                      <div>
-                        <span className="text-[#8A796C] block">E-posta:</span>
-                        <a href={`mailto:${app.email}`} className="font-semibold text-[#20150F] text-sm mt-0.5 block hover:text-[#C59A6F]">{app.email}</a>
-                      </div>
-                    </div>
-
-                    <div className="p-4 rounded-2xl bg-[#FAF7F2] text-xs space-y-1.5 border border-[#EAE1D5]">
-                      <span className="font-bold text-[#20150F]">Sektör Tecrübesi:</span> {app.experience}
-                      {app.message && (
-                        <p className="text-[#6B6056] pt-1 leading-relaxed">
-                          <span className="font-bold text-[#20150F]">Adayın Notu:</span> {app.message}
-                        </p>
-                      )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                  {/* Search */}
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-[#73675C] block mb-1">
+                      Arama (İsim / Telefon / Şehir)
+                    </label>
+                    <div className="relative">
+                      <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#73675C]" />
+                      <input
+                        type="text"
+                        placeholder="Aday adı, şehir, telefon..."
+                        value={appFilterSearch}
+                        onChange={(e) => setAppFilterSearch(e.target.value)}
+                        className="w-full pl-9 pr-3 py-2 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] focus:outline-none"
+                      />
                     </div>
                   </div>
-                ))}
+
+                  {/* Model Filter */}
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-[#73675C] block mb-1">
+                      Mağaza Modeli
+                    </label>
+                    <select
+                      value={appFilterModel}
+                      onChange={(e) => setAppFilterModel(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] focus:outline-none text-xs"
+                    >
+                      <option value="Tümü">Tüm Modeller</option>
+                      <option value="START">RENN START</option>
+                      <option value="COFFEE">RENN COFFEE</option>
+                      <option value="FLAGSHIP">RENN FLAGSHIP</option>
+                    </select>
+                  </div>
+
+                  {/* Status Filter */}
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-[#73675C] block mb-1">
+                      Başvuru Durumu
+                    </label>
+                    <select
+                      value={appFilterStatus}
+                      onChange={(e) => setAppFilterStatus(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] focus:outline-none text-xs"
+                    >
+                      <option value="Tümü">Tüm Durumlar</option>
+                      <option value="Yeni Başvuru">Yeni Başvuru</option>
+                      <option value="Ön İnceleme">Ön İnceleme</option>
+                      <option value="Görüşme">Görüşme</option>
+                      <option value="Fizibilite">Fizibilite</option>
+                      <option value="Sözleşme">Sözleşme</option>
+                      <option value="Tamamlandı">Tamamlandı</option>
+                      <option value="Reddedildi">Reddedildi</option>
+                    </select>
+                  </div>
+
+                  {/* Budget Filter */}
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-[#73675C] block mb-1">
+                      Bütçe Aralığı
+                    </label>
+                    <select
+                      value={appFilterBudget}
+                      onChange={(e) => setAppFilterBudget(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] focus:outline-none text-xs"
+                    >
+                      <option value="Tümü">Tüm Bütçeler</option>
+                      <option value="2.000.000">2M - 3.5M ₺</option>
+                      <option value="3.500.000">3.5M - 6M ₺</option>
+                      <option value="6.000.000">6M ₺ ve Üzeri</option>
+                    </select>
+                  </div>
+                </div>
+
+                {(appFilterSearch || appFilterModel !== "Tümü" || appFilterStatus !== "Tümü" || appFilterBudget !== "Tümü") && (
+                  <div className="pt-2 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAppFilterSearch("");
+                        setAppFilterModel("Tümü");
+                        setAppFilterStatus("Tümü");
+                        setAppFilterBudget("Tümü");
+                      }}
+                      className="text-xs text-[#A5784C] hover:underline font-semibold"
+                    >
+                      Filtreleri Temizle
+                    </button>
+                  </div>
+                )}
               </div>
+
+              {/* Applications List */}
+              {filteredApplications.length === 0 ? (
+                <div className="p-12 text-center bg-white rounded-3xl border border-[#E3D6C8] space-y-2">
+                  <p className="text-sm font-semibold text-[#20150F]">Seçili filtrelere uygun başvuru bulunamadı.</p>
+                  <p className="text-xs text-[#73675C]">Filtreleri sıfırlayarak tüm başvuruları görebilirsiniz.</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {filteredApplications.map((app) => {
+                    const appId = app.id || app.fullName;
+                    const currentNote =
+                      internalNotesState[appId] !== undefined
+                        ? internalNotesState[appId]
+                        : app.internalNotes || "";
+
+                    const statusBadgeColors: Record<string, string> = {
+                      "Yeni Başvuru": "bg-blue-100 text-blue-800 border-blue-200",
+                      "Ön İnceleme": "bg-amber-100 text-amber-800 border-amber-200",
+                      "Görüşme": "bg-purple-100 text-purple-800 border-purple-200",
+                      "Fizibilite": "bg-indigo-100 text-indigo-800 border-indigo-200",
+                      "Sözleşme": "bg-teal-100 text-teal-800 border-teal-200",
+                      "Tamamlandı": "bg-emerald-100 text-emerald-800 border-emerald-200",
+                      "Reddedildi": "bg-red-100 text-red-800 border-red-200",
+                      "reviewed": "bg-amber-100 text-amber-800 border-amber-200",
+                      "pending": "bg-blue-100 text-blue-800 border-blue-200"
+                    };
+
+                    const badgeClass =
+                      statusBadgeColors[app.status] || "bg-gray-100 text-gray-800 border-gray-200";
+
+                    return (
+                      <div
+                        key={appId}
+                        className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E3D6C8] shadow-xs space-y-5"
+                      >
+                        {/* Candidate Top Row */}
+                        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[#F0E6D8] pb-4">
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-2">
+                              <span className="text-[10px] uppercase tracking-wider text-[#A5784C] font-bold">
+                                Aday Kaydı
+                              </span>
+                              <span className="text-[10px] text-[#A5998D]">
+                                • {app.createdAt ? new Date(app.createdAt).toLocaleDateString("tr-TR") : "Yeni"}
+                              </span>
+                            </div>
+                            <h3 className="font-serif-luxury text-2xl font-bold text-[#20150F]">
+                              {app.fullName}
+                            </h3>
+                            <div className="flex flex-wrap items-center gap-2 pt-1">
+                              {app.concept && (
+                                <span className="px-3 py-0.5 rounded-full bg-[#EFE6DC] text-[#8C6239] text-[11px] font-semibold border border-[#DECDBB]">
+                                  {app.concept}
+                                </span>
+                              )}
+                              <span className="px-3 py-0.5 rounded-full bg-[#FAF7F2] text-[#20150F] text-[11px] font-bold border border-[#DECDBB]">
+                                Bütçe: {app.budget}
+                              </span>
+                              {app.timeline && (
+                                <span className="px-3 py-0.5 rounded-full bg-[#FAF7F2] text-[#73675C] text-[11px] font-medium border border-[#EAE1D5]">
+                                  {app.timeline}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Status Workflow Selector */}
+                          <div className="flex items-center gap-3">
+                            <div className="text-right">
+                              <span className="text-[10px] uppercase font-bold text-[#73675C] block mb-1">
+                                Durum Güncelle
+                              </span>
+                              <select
+                                value={app.status || "Yeni Başvuru"}
+                                onChange={(e) => handleAppStatusChange(appId, e.target.value)}
+                                className={`px-3 py-1.5 rounded-xl text-xs font-bold border cursor-pointer ${badgeClass}`}
+                              >
+                                <option value="Yeni Başvuru">Yeni Başvuru</option>
+                                <option value="Ön İnceleme">Ön İnceleme</option>
+                                <option value="Görüşme">Görüşme</option>
+                                <option value="Fizibilite">Fizibilite</option>
+                                <option value="Sözleşme">Sözleşme</option>
+                                <option value="Tamamlandı">Tamamlandı</option>
+                                <option value="Reddedildi">Reddedildi</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Candidate Contact & Location Details */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                          <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#EAE1D5]">
+                            <span className="text-[#8A796C] block text-[10px] uppercase font-bold">Hedef Lokasyon:</span>
+                            <span className="font-semibold text-[#20150F] text-sm mt-0.5 block truncate">
+                              {app.city} {app.targetLocation && `— ${app.targetLocation}`}
+                            </span>
+                          </div>
+
+                          <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#EAE1D5]">
+                            <span className="text-[#8A796C] block text-[10px] uppercase font-bold">İkamet Şehri:</span>
+                            <span className="font-semibold text-[#20150F] text-sm mt-0.5 block truncate">
+                              {app.currentCity || app.city || "—"}
+                            </span>
+                          </div>
+
+                          <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#EAE1D5]">
+                            <span className="text-[#8A796C] block text-[10px] uppercase font-bold">Telefon:</span>
+                            <a
+                              href={`tel:${app.phone}`}
+                              className="font-semibold text-[#20150F] text-sm mt-0.5 block hover:text-[#C59A6F] truncate"
+                            >
+                              {app.phone}
+                            </a>
+                          </div>
+
+                          <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#EAE1D5]">
+                            <span className="text-[#8A796C] block text-[10px] uppercase font-bold">E-posta:</span>
+                            <a
+                              href={`mailto:${app.email}`}
+                              className="font-semibold text-[#20150F] text-sm mt-0.5 block hover:text-[#C59A6F] truncate"
+                            >
+                              {app.email}
+                            </a>
+                          </div>
+                        </div>
+
+                        {/* Experience and Notes */}
+                        <div className="p-4 rounded-2xl bg-[#FAF7F2] text-xs space-y-1.5 border border-[#EAE1D5]">
+                          <div>
+                            <span className="font-bold text-[#20150F]">Girişimcilik & Sektör Deneyimi:</span>{" "}
+                            <span className="text-[#5A4F44]">{app.experience}</span>
+                          </div>
+                          {app.message && (
+                            <div className="pt-1 border-t border-[#EAE1D5]/60 text-[#5A4F44]">
+                              <span className="font-bold text-[#20150F]">Adayın Ek Notu:</span> {app.message}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Internal Manager Notes Box */}
+                        <div className="p-4 rounded-2xl bg-amber-50/50 border border-amber-200/70 space-y-2">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="font-bold text-[#7A4B1A] flex items-center gap-1.5">
+                              <FileText size={13} />
+                              <span>Yönetici Özel Notları (Gizli):</span>
+                            </span>
+                            {notesSaveStatus[appId] && (
+                              <span className="text-emerald-700 font-bold text-[11px] animate-fade-in">
+                                ✓ Not Kaydedildi
+                              </span>
+                            )}
+                          </div>
+                          <textarea
+                            rows={2}
+                            placeholder="Adayla yapılan görüşme notları, lokasyon değerlendirmesi veya takip detayları..."
+                            value={currentNote}
+                            onChange={(e) =>
+                              setInternalNotesState((prev) => ({
+                                ...prev,
+                                [appId]: e.target.value
+                              }))
+                            }
+                            className="w-full p-2.5 rounded-xl bg-white border border-amber-200 text-xs text-[#20150F] focus:outline-none"
+                          />
+                          <div className="flex justify-end">
+                            <button
+                              type="button"
+                              onClick={() => handleSaveInternalNote(appId)}
+                              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#20150F] text-[#FAF7F2] hover:bg-[#38261C] transition-colors cursor-pointer"
+                            >
+                              Notu Kaydet
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           )}
 

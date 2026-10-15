@@ -22,18 +22,40 @@ import {
   SiteSettings,
 } from "../data/initialData";
 
+export type FranchiseStatus =
+  | "Yeni Başvuru"
+  | "Ön İnceleme"
+  | "Görüşme"
+  | "Fizibilite"
+  | "Sözleşme"
+  | "Tamamlandı"
+  | "Reddedildi"
+  | "pending"
+  | "reviewed"
+  | "contacted"
+  | "archived";
+
 export interface FranchiseApplication {
   id?: string;
   fullName: string;
   phone: string;
   email: string;
+  currentCity?: string;
   city: string;
   concept?: string;
   targetLocation: string;
   budget: string;
+  timeline?: string;
+  hasBusinessExperience?: string;
+  hasFnbExperience?: string;
+  willManagePersonally?: string;
+  storeGoal?: string;
   experience: string;
   message: string;
-  status: "pending" | "reviewed" | "contacted" | "archived";
+  kvkkConsent?: boolean;
+  marketingConsent?: boolean;
+  status: FranchiseStatus;
+  internalNotes?: string;
   createdAt?: any;
 }
 
@@ -206,6 +228,36 @@ export async function submitFranchiseApplication(
   } catch (err) {
     console.warn("Firestore franchise add fallback to local", err);
     return { success: true, id: "local_" + Date.now() };
+  }
+}
+
+export async function updateFranchiseApplication(
+  id: string,
+  updates: Partial<FranchiseApplication>
+): Promise<boolean> {
+  if (typeof window !== "undefined") {
+    const local = localStorage.getItem("renn_franchise_apps");
+    if (local) {
+      try {
+        const list: FranchiseApplication[] = JSON.parse(local);
+        const idx = list.findIndex((a) => a.id === id);
+        if (idx !== -1) {
+          list[idx] = { ...list[idx], ...updates };
+          localStorage.setItem("renn_franchise_apps", JSON.stringify(list));
+        }
+      } catch (e) {}
+    }
+  }
+
+  try {
+    if (!id.startsWith("local_") && !id.startsWith("demo_")) {
+      const docRef = doc(db, "franchise_applications", id);
+      await updateDoc(docRef, updates);
+    }
+    return true;
+  } catch (err) {
+    console.warn("Firestore update franchise failed", err);
+    return true;
   }
 }
 
