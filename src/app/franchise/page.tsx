@@ -24,7 +24,6 @@ import {
   ChevronUp,
   ChevronRight,
   Info,
-  Sliders,
   Calendar,
   Users,
   BarChart3,
@@ -33,7 +32,6 @@ import {
   BookOpen,
   Clock,
   MapPin,
-  Printer,
   Download,
   FileText,
   HelpCircle,
@@ -43,7 +41,10 @@ import {
   Percent,
   CheckSquare,
   Square,
-  ArrowUpRight
+  ArrowUpRight,
+  Truck,
+  Handshake,
+  Scale
 } from "lucide-react";
 
 export default function FranchisePage() {
@@ -61,7 +62,7 @@ export default function FranchisePage() {
       const sections = [
         "neden-renn",
         "modeller",
-        "simulator",
+        "seffaf-yatirim",
         "academy",
         "live",
         "growth",
@@ -221,36 +222,36 @@ export default function FranchisePage() {
     {
       id: "renn-start",
       name: "RENN START",
-      badge: "Kompakt Kahve Noktası",
-      tagline: "Yüksek Sirkülasyon & Optimize Edilmiş Take-Away Modeli",
+      badge: "Standart Kahve Mağazası",
+      tagline: "Yüksek Sirkülasyon & Optimize Edilmiş Konsept",
       status: "Aktif Konsept",
-      minArea: "40 – 75 m²",
-      teamSize: "2 – 3 Barista",
+      minArea: "150 – 250 m²",
+      teamSize: "3 – 5 Barista",
       locations: "AVM içi ve food court girişleri, metro ve aktarma aksları, plazalar, hastaneler ve yoğun yaya caddeleri.",
       summary:
-        "Minimum metrekarede maksimum operasyon hızı hedefleyen girişimciler için tasarlandı. Paket servis (Take-Away) odaklı ergonomik bar mimarisi ve seçkin içecek menüsü ile düşük işletme maliyeti sağlar.",
+        "150 - 250 m² aralığındaki mağaza alanlarında hızlı sipariş döngüsü ve ergonomik bar mimarisi ile yüksek operasyonel verimlilik sağlayan standart dükkan konsepti. Hem paket servis hem de konforlu oturum alanını dengeler.",
       image: "/venue/cup.jpg",
       features: [
+        "150 – 250 m² optimize edilmiş mağaza ve ferah oturma alanı",
         "2 kişilik yüksek hızlı ergonomik espresso istasyonu",
-        "Optimize edilmiş kahve ve paketli taze gastronomi menüsü",
-        "Kompakt depolama ve hızlı temizlik prosedürleri",
-        "Düşük ilk kurulum maliyeti ve yalın kira yükü"
+        "Optimize edilmiş kahve ve taze gastronomi menüsü",
+        "Kompakt depolama ve hızlı temizlik prosedürleri"
       ]
     },
     {
       id: "renn-coffee",
       name: "RENN COFFEE",
-      badge: "Klasik Deneyim Mağazası",
+      badge: "Geniş Deneyim Mağazası",
       tagline: "Geniş Oturma Alanı, Sosyal Atmosfer & Tam Menü Deneyimi",
       status: "Aktif Konsept",
-      minArea: "90 – 160 m² + Bahçe",
-      teamSize: "4 – 6 Barista & Salon",
+      minArea: "250 – 350 m²",
+      teamSize: "5 – 8 Barista & Salon",
       locations: "Şehrin popüler ana caddeleri, üniversite yerleşke aksları, gastronomi çarşıları ve seçkin konut çevreleri.",
       summary:
-        "Markamızın amiral ruhunu yansıtan klasik üçüncü nesil kahve deneyimi. Antik Mısır rölyef dokuları, konforlu çalışma ve sohbet alanları, tam barista kahve reçeteleri, özel panini ve taze pastane lezzetleri.",
+        "Markamızın amiral ruhunu yansıtan klasik üçüncü nesil kahve deneyimi. 250 - 350 m² ferah alanda Antik Mısır rölyef dokuları, konforlu çalışma ve sohbet alanları, tam barista kahve reçeteleri, özel panini ve taze pastane lezzetleri.",
       image: "/venue/wall.jpg",
       features: [
-        "Geniş iç mekân ve açık hava bahçe / teras oturumu",
+        "250 – 350 m² geniş iç mekân ve açık hava bahçe / teras oturumu",
         "Tam teşekküllü barista barı ve özel demleme köşesi",
         "Sıcak fırın panini, bagel ve imza San Sebastian tatlı servisi",
         "Laptop ile çalışanlar için yüksek hızlı altyapı ve akustik aydınlatma"
@@ -262,14 +263,14 @@ export default function FranchisePage() {
       badge: "Müstakil Ticari Villa & Roastery",
       tagline: "Bağımsız Yaşam Alanı, Mistik Mısır Mimarisi & Workshop Lab",
       status: "Planlanan / Amiral Konsept",
-      minArea: "250 – 500+ m² Villa + 200+ m² Avlu",
+      minArea: "250 m² + (Villa & Avlu)",
       teamSize: "8 – 12 Barista & Servis Ekibi",
       locations: "Bağımsız ticari villalar, tarihi taş köşkler, prestijli sahil bulvarları ve geniş bahçeli serbest yapılar.",
       summary:
-        "Şehrin ikonik buluşma noktası olmaya aday prestij yatırımı. Şube içinde özel kahve kavurma (Roastery Lab) alanı, atölyeler, VIP toplantı odaları ve geniş antik Mısır mimari peyzajlı avlu.",
+        "Şehrin ikonik buluşma noktası olmaya aday prestij yatırımı. 250 m² ve üzeri bağımsız ticari villalarda şube içi özel kahve kavurma (Roastery Lab) alanı, atölyeler, VIP toplantı odaları ve geniş antik Mısır mimari peyzajlı avlu.",
       image: "/brand/renn-manor-hero.jpg",
       features: [
-        "Müstakil bahçe, su havuzları ve antik Mısır mimari sütunlu avlu",
+        "250 m² ve üzeri müstakil bahçe, su havuzları ve antik Mısır sütunlu avlu",
         "Roastery & Coffee Lab: Yerinde çekirdek kavurma ve tadım workshopları",
         "Geniş mutfak: Gurme kahvaltı, imza sıcak paniniler ve pastane",
         "VIP özel toplantı ve etkinlik locaları, seramik atölyesi alanı"
@@ -278,108 +279,123 @@ export default function FranchisePage() {
   ];
 
   // ==========================================
-  // SECTION 4: FINANCIAL SIMULATOR STATE
+  // SECTION 4: ŞEFFAF YATIRIM, GÜÇLÜ İŞ ORTAKLIĞI
   // ==========================================
-  const [activeScenario, setActiveScenario] = useState<"temkinli" | "baz" | "iyimser">("baz");
+  const [showInvestmentItemsModal, setShowInvestmentItemsModal] = useState(false);
+  const [openPolicyIndex, setOpenPolicyIndex] = useState<number | null>(null);
 
-  // Inputs
-  const [simModel, setSimModel] = useState<string>("RENN COFFEE");
-  const [dailyCustomers, setDailyCustomers] = useState<number>(320);
-  const [avgTicket, setAvgTicket] = useState<number>(195);
-  const [operatingDays, setOperatingDays] = useState<number>(30);
-  const [cogsPercent, setCogsPercent] = useState<number>(30); // %30 ürün maliyeti
-  const [monthlyRent, setMonthlyRent] = useState<number>(75000);
-  const [monthlyStaff, setMonthlyStaff] = useState<number>(95000);
-  const [monthlyOther, setMonthlyOther] = useState<number>(35000); // enerji, ambalaj, muhasebe
-  const [royaltyPercent, setRoyaltyPercent] = useState<number>(4); // %4 royalty & marketing
-  const [initialInvestment, setInitialInvestment] = useState<number>(3500000);
-
-  // Scenario switch presets
-  const applyScenario = (sc: "temkinli" | "baz" | "iyimser") => {
-    setActiveScenario(sc);
-    if (sc === "temkinli") {
-      setDailyCustomers(210);
-      setAvgTicket(165);
-      setCogsPercent(33);
-      setMonthlyRent(70000);
-      setMonthlyStaff(85000);
-      setMonthlyOther(32000);
-      setRoyaltyPercent(4);
-    } else if (sc === "baz") {
-      setDailyCustomers(340);
-      setAvgTicket(195);
-      setCogsPercent(30);
-      setMonthlyRent(80000);
-      setMonthlyStaff(105000);
-      setMonthlyOther(38000);
-      setRoyaltyPercent(4);
-    } else if (sc === "iyimser") {
-      setDailyCustomers(520);
-      setAvgTicket(230);
-      setCogsPercent(28);
-      setMonthlyRent(90000);
-      setMonthlyStaff(135000);
-      setMonthlyOther(48000);
-      setRoyaltyPercent(4);
+  const transparentModelCards = [
+    {
+      no: "01",
+      title: "Gizlenmiş Yatırım Maliyeti Yok",
+      desc: "Franchise sürecinde mağaza kurulumundan ekipmana, mimari uygulamalardan operasyonel hazırlıklara kadar tüm yatırım kalemleri yatırımcıyla şeffaf şekilde paylaşılır. Yatırımcı, sözleşme öncesinde öngörülen maliyetleri kalem kalem inceleme fırsatına sahip olur."
+    },
+    {
+      no: "02",
+      title: "Yalnızca Marka İsim Hakkı Bedeli",
+      desc: "Renn Coffee'nin franchise yatırımcısından aldığı başlangıç franchise bedeli yalnızca marka isim hakkını kapsar. Mağaza dekorasyonu, ekipman, mobilya ve kurulum gibi diğer yatırım kalemleri ayrıca ve açık şekilde gösterilir. Renn Coffee tarafından tahsil edilen ücretler ile üçüncü taraflara ödenen kurulum maliyetleri birbirinden ayrıştırılır."
+    },
+    {
+      no: "03",
+      title: "Sürpriz Giderlere Yer Yok",
+      desc: "Franchise yatırımcılarına başlangıçta detaylı yatırım maliyeti tablosu sunulur. Sözleşmede yer alan bütün ücretler, zorunlu ödemeler ve varsa devam eden mali yükümlülükler açıkça belirtilir. Tahmini maliyetler ile kesinleşmiş teklifler ayrı gösterilir. Lokasyon ve piyasa koşullarından doğabilecek değişiklikler yatırımcıya önceden açıklanır."
     }
-  };
+  ];
 
-  // Calculations
-  const monthlyRevenue = useMemo(() => {
-    return Math.round(dailyCustomers * avgTicket * operatingDays);
-  }, [dailyCustomers, avgTicket, operatingDays]);
+  const localSupplyAdvantages = [
+    {
+      title: "Yerel Tedarikçi İş Birlikleri",
+      desc: "Franchise işletmesinin bulunduğu şehirdeki uygun üretici ve tedarikçiler değerlendirilerek alternatif satın alma kanalları oluşturulur."
+    },
+    {
+      title: "Maliyet Optimizasyonu",
+      desc: "Nakliye, lojistik, tedarik ve operasyon giderlerini azaltabilecek fırsatlar analiz edilir."
+    },
+    {
+      title: "Kalite Standardının Korunması",
+      desc: "Yerel tedarikçilerden alınacak ürünler Renn Coffee'nin kalite, hijyen ve ürün standartlarına uygun olmalıdır."
+    },
+    {
+      title: "Sürdürülebilir Kârlılık",
+      desc: "Amaç yalnızca mağaza açmak değil, satın alma verimliliğini artırarak işletmecinin uzun vadeli finansal performansını desteklemektir."
+    }
+  ];
 
-  const monthlyCOGS = useMemo(() => {
-    return Math.round(monthlyRevenue * (cogsPercent / 100));
-  }, [monthlyRevenue, cogsPercent]);
+  const policyItems = [
+    {
+      title: "Yerel Tedarikçi Değerlendirme ve Onay Süreci",
+      summary: "Bölgesel üreticilerin numune ve hijyen denetimleri merkez ekibimizce yapılır.",
+      desc: "Franchise şubesinin bulunduğu şehirdeki potansiyel yerel üreticilerin numuneleri Renn merkez kalite ve gastronomi ekibimiz tarafından test edilir; standartlara uyum sağlayan tedarikçiler resmi onaylı listeye dahil edilir."
+    },
+    {
+      title: "Ürün Kalite ve Hijyen Standartları",
+      summary: "HACCP, gıda güvenliği ve Renn Coffee imza lezzetlerinden taviz verilmez.",
+      desc: "Yerel tedarikten temin edilen tüm gıda ve sarf malzemeleri Türk Gıda Kodeksi, HACCP ve Renn Coffee imza reçete protokollerine tam uyumlu olmak zorundadır. Düzenli gizli müşteri ve kalite denetimleri ile standartlar korunur."
+    },
+    {
+      title: "Merkezi Tedarik Zorunluluğu Bulunan Ürün Kategorileri",
+      summary: "Özel kavrum çekirdek kahveler, reçeteli soslar ve marka ambalajları merkezden sağlanır.",
+      desc: "%100 Arabica özel kavrum kahve çekirdekleri, Antik Mısır bitki harmanları, tescilli şuruplar ve marka logolu özel ambalajlar marka kimliğini ve standart lezzeti korumak adına doğrudan merkezden sevk edilir."
+    },
+    {
+      title: "Alternatif Tedarikçi Kullanımı İçin Onay Prosedürü",
+      summary: "Süt, unlu mamul ve taze sarflar için işletmeci alternatif tedarikçi önerebilir.",
+      desc: "Taze günlük süt, unlu mamuller veya bölgesel taze gastronomi ürünleri için işletmeci alternatif yerel üretici önerebilir. Yazılı merkez onayı akabinde satın alma anlaşmaları devreye alınır."
+    },
+    {
+      title: "Yatırımcıyla Maliyet Bilgilerinin Paylaşılması",
+      summary: "Birim fiyatlar, hacim iskontoları ve lojistik koşulları şeffafça sunulur.",
+      desc: "Şeffaflık ilkemiz gereği tüm hammadde liste fiyatları, merkezi hacim iskontoları ve lojistik giderleri periyodik olarak açık biçimde paylaşılır; aracı gizli marjlar veya beklenmedik maliyetler yansıtılmaz."
+    }
+  ];
 
-  const monthlyRoyalty = useMemo(() => {
-    return Math.round(monthlyRevenue * (royaltyPercent / 100));
-  }, [monthlyRevenue, royaltyPercent]);
-
-  const variableCosts = useMemo(() => {
-    return monthlyCOGS + monthlyRoyalty;
-  }, [monthlyCOGS, monthlyRoyalty]);
-
-  const fixedCosts = useMemo(() => {
-    return monthlyRent + monthlyStaff + monthlyOther;
-  }, [monthlyRent, monthlyStaff, monthlyOther]);
-
-  const totalMonthlyExpenses = useMemo(() => {
-    return variableCosts + fixedCosts;
-  }, [variableCosts, fixedCosts]);
-
-  const monthlyProfit = useMemo(() => {
-    return monthlyRevenue - totalMonthlyExpenses;
-  }, [monthlyRevenue, totalMonthlyExpenses]);
-
-  const profitMargin = useMemo(() => {
-    if (monthlyRevenue <= 0) return 0;
-    return ((monthlyProfit / monthlyRevenue) * 100).toFixed(1);
-  }, [monthlyProfit, monthlyRevenue]);
-
-  // Break-even revenue: Fixed Costs / (1 - Variable Cost Ratio)
-  const breakEvenRevenue = useMemo(() => {
-    const varRatio = (cogsPercent + royaltyPercent) / 100;
-    if (varRatio >= 1) return 0;
-    return Math.round(fixedCosts / (1 - varRatio));
-  }, [fixedCosts, cogsPercent, royaltyPercent]);
-
-  // Payback period (months)
-  const paybackMonths = useMemo(() => {
-    if (monthlyProfit <= 0 || !initialInvestment) return null;
-    const months = (initialInvestment / monthlyProfit).toFixed(1);
-    return parseFloat(months);
-  }, [initialInvestment, monthlyProfit]);
-
-  // Format currency
-  const formatTL = (val: number) => {
-    return new Intl.NumberFormat("tr-TR", {
-      style: "currency",
-      currency: "TRY",
-      maximumFractionDigits: 0
-    }).format(val);
-  };
+  const investmentCostItems = [
+    {
+      no: "01",
+      title: "Marka İsim Hakkı Bedeli",
+      desc: "Renn Coffee tescilli marka lisansı, kurumsal kimlik kullanım hakkı ve sözleşmeyle güvenceye alınan bölgesel koruma alanı."
+    },
+    {
+      no: "02",
+      title: "Mimari Proje ve Uygulama Giderleri",
+      desc: "Antik Mısır estetiğinde 3D mimari rölyef tasarımı, mekanik, elektrik tesisatı, zemin, tavan ve anahtar teslim şantiye inşaat imalatları."
+    },
+    {
+      no: "03",
+      title: "Mağaza Ekipmanları",
+      desc: "Yüksek performanslı profesyonel çok gruplu espresso makineleri, hassas on-demand değirmenler, ters ozmoz su arıtma, buz makinesi, fırın ve endüstriyel soğutma sistemleri."
+    },
+    {
+      no: "04",
+      title: "Mobilya ve Dekorasyon",
+      desc: "Marka konseptine özel üretilen masif ahşap ve taş oturma grupları, koltuklar, piramidal rölyef duvar panelleri ve sıcak akustik aydınlatma armatürleri."
+    },
+    {
+      no: "05",
+      title: "İlk Ürün ve Stok Maliyetleri",
+      desc: "Açılış haftası operasyonu için gerekli %100 Arabica çekirdek stoğu, tescilli soslar, çaylar, pastane ürünleri ve logolu bardak/ambalaj başlangıç envanteri."
+    },
+    {
+      no: "06",
+      title: "Resmî İzin ve Ruhsat Giderleri",
+      desc: "Belediye iş yeri açma ve çalışma ruhsatı, itfaiye yangın uygunluk raporu, tabela ve baca projelendirme resmi harçları."
+    },
+    {
+      no: "07",
+      title: "Açılış Öncesi Operasyonel Hazırlık",
+      desc: "Barista üniformaları, temizlik ve sanitasyon kimyasalları, Adisyo POS donanımı, barkod okuyucular ve el terminalleri."
+    },
+    {
+      no: "08",
+      title: "İşletme Sermayesi",
+      desc: "Şubenin açılışından itibaren ilk aylardaki işletme giderlerini (kira, personel, faturalar) ve nakit akışını güvenceye alan nakit fon."
+    },
+    {
+      no: "09",
+      title: "Sürekli Franchise, Yazılım ve Sözleşmesel Ücretler",
+      desc: "Varsa devam eden aylık ciro bazlı royalty (isim hakkı payı), ulusal pazarlama katkı payı ve bulut POS/yazılım lisans bedeli şeffaf biçimde sözleşmede yer alır; asla sürpriz ek masraf talep edilmez."
+    }
+  ];
 
   // ==========================================
   // SECTION 5: RENN ACADEMY MODULES
@@ -609,7 +625,7 @@ export default function FranchisePage() {
     // Step 2: Investment Preferences
     city: "", // Target City
     targetLocation: "",
-    concept: "RENN COFFEE (Klasik Mağaza • 90-160 m²)",
+    concept: "RENN COFFEE (Geniş Mağaza • 250-350 m²)",
     budget: "3.500.000 ₺ - 6.000.000 ₺",
     timeline: "1 - 3 Ay İçerisinde",
 
@@ -768,12 +784,12 @@ export default function FranchisePage() {
                 Mağaza Modelleri
               </button>
               <button
-                onClick={() => scrollToSection("simulator")}
+                onClick={() => scrollToSection("seffaf-yatirim")}
                 className={`px-3 py-1.5 rounded-full transition-colors cursor-pointer ${
-                  activeNav === "simulator" ? "bg-[#20150F] text-[#FAF7F2]" : "text-[#73675C] hover:text-[#20150F]"
+                  activeNav === "seffaf-yatirim" ? "bg-[#20150F] text-[#FAF7F2]" : "text-[#73675C] hover:text-[#20150F]"
                 }`}
               >
-                Yatırım Simülatörü
+                Şeffaf Yatırım
               </button>
               <button
                 onClick={() => scrollToSection("academy")}
@@ -1200,380 +1216,226 @@ export default function FranchisePage() {
       </section>
 
       {/* =========================================================================
-          BÖLÜM 4 — RENN INSIGHT / İNTERAKTİF YATIRIM SİMÜLATÖRÜ
+          BÖLÜM 4 — ŞEFFAF YATIRIM, GÜÇLÜ İŞ ORTAKLIĞI
          ========================================================================= */}
-      <section id="simulator" className="py-24 px-6 sm:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <section id="seffaf-yatirim" className="py-24 px-6 sm:px-8 max-w-7xl mx-auto space-y-20">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-xs uppercase tracking-[0.25em] text-[#C59A6F] font-semibold flex items-center justify-center gap-2">
-            <Sliders size={14} />
-            <span>RENN INSIGHT SİMÜLATÖRÜ</span>
+            <ShieldCheck size={16} />
+            <span>ŞEFFAF YATIRIM & GÜÇLÜ İŞ ORTAKLIĞI</span>
           </span>
           <h2 className="font-serif-luxury text-3xl sm:text-5xl font-bold text-[#20150F]">
-            Yatırımını Hayal Etme. Verilerle Planla.
+            Gizli Maliyet Yok. Şeffaf Yatırım Var.
           </h2>
           <p className="text-sm sm:text-base text-[#6B6056] leading-relaxed">
-            Renn Coffee yatırım simülatörüyle farklı müşteri ve satış senaryolarını inceleyin,
-            başabaş noktanızı ve operasyonel marjlarınızı canlı olarak simüle edin.
+            &ldquo;Renn Coffee&apos;de yatırımcılarımızın neye, neden ve ne kadar yatırım yaptığını bilmesini önemsiyoruz.
+            Franchise sürecinde tüm yatırım kalemlerini açıkça paylaşıyor, anlaşılır ticari koşullarla güvene
+            dayalı iş ortaklıkları kuruyoruz.&rdquo;
           </p>
+        </div>
 
-          {/* 3 Scenario Presets */}
-          <div className="flex items-center justify-center gap-2 pt-2">
-            <span className="text-xs font-semibold text-[#73675C] mr-2">Senaryo Seçimi:</span>
+        {/* 1. ŞEFFAF YATIRIM MODELİ (3 Güçlü Kart) */}
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {transparentModelCards.map((card, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-3xl p-8 border border-[#E3D6C8] shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6 group"
+              >
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-[#FAF7F2] border border-[#E3D6C8] flex items-center justify-center text-[#C59A6F] font-serif-luxury font-bold text-lg group-hover:bg-[#20150F] group-hover:text-[#FAF7F2] group-hover:border-[#20150F] transition-all">
+                    {card.no}
+                  </div>
+                  <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#20150F]">
+                    {card.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#5A4F44] leading-relaxed">
+                    {card.desc}
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-[#F0E6D8] flex items-center gap-2 text-xs font-semibold text-[#8C6239]">
+                  <CheckCircle2 size={14} className="text-[#C59A6F]" />
+                  <span>Şeffaf & Denetlenebilir Süreç</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Interactive Trigger Button */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
-              onClick={() => applyScenario("temkinli")}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                activeScenario === "temkinli"
-                  ? "bg-[#20150F] text-[#FAF7F2] shadow-sm"
-                  : "bg-white border border-[#DECDBB] text-[#73675C] hover:text-[#20150F]"
-              }`}
+              type="button"
+              onClick={() => setShowInvestmentItemsModal(true)}
+              className="w-full sm:w-auto px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold bg-[#20150F] text-[#FAF7F2] hover:bg-[#C59A6F] hover:text-[#20150F] transition-all shadow-md flex items-center justify-center gap-2.5 cursor-pointer group"
             >
-              Temkinli
-            </button>
-            <button
-              onClick={() => applyScenario("baz")}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                activeScenario === "baz"
-                  ? "bg-[#20150F] text-[#FAF7F2] shadow-sm"
-                  : "bg-white border border-[#DECDBB] text-[#73675C] hover:text-[#20150F]"
-              }`}
-            >
-              Baz (Önerilen)
-            </button>
-            <button
-              onClick={() => applyScenario("iyimser")}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                activeScenario === "iyimser"
-                  ? "bg-[#20150F] text-[#FAF7F2] shadow-sm"
-                  : "bg-white border border-[#DECDBB] text-[#73675C] hover:text-[#20150F]"
-              }`}
-            >
-              İyimser
+              <FileText size={15} className="text-[#C59A6F] group-hover:text-[#20150F] transition-colors" />
+              <span>Yatırım Kalemlerini İncele</span>
+              <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </button>
           </div>
         </div>
 
-        {/* Simulator Container */}
-        <div className="bg-white rounded-3xl border border-[#E3D6C8] shadow-xl p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Controls Column (Left) */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0E6D8]">
-              <h3 className="font-serif-luxury text-xl font-bold text-[#20150F]">
-                İşletme Parametreleri
-              </h3>
-              <span className="text-[11px] text-[#A5784C] font-semibold uppercase tracking-wider">
-                Değiştirilebilir Değerler
-              </span>
+        {/* 2. YEREL TEDARİK, DAHA VERİMLİ İŞLETME (Görsel Olarak Ayrılmış Koyu Lüks Kart) */}
+        <div className="bg-[#20150F] text-[#FAF7F2] rounded-3xl p-8 sm:p-12 lg:p-14 border border-[#3E2B21] shadow-2xl relative overflow-hidden space-y-12">
+          {/* Subtle Ambient Radial Highlight */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(197,154,111,0.18)_0%,transparent_70%)] pointer-events-none" />
+
+          {/* Area Header */}
+          <div className="relative z-10 max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2E1F18] border border-[#443024] text-xs uppercase tracking-widest text-[#C59A6F] font-semibold">
+              <Truck size={14} />
+              <span>YEREL GÜÇ & MALİYET OPTİMİZASYONU</span>
             </div>
+            <h3 className="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+              Yerel Gücü Kullanıyoruz. <br className="hidden sm:inline" />
+              <span className="text-[#C59A6F] italic">Birlikte Kazanıyoruz.</span>
+            </h3>
+            <p className="text-xs sm:text-sm text-[#BFAFA0] leading-relaxed">
+              &ldquo;Renn Coffee, franchise işletmelerinde maliyet verimliliğini artırmak amacıyla merkezi tedarik
+              sisteminin yanında yerel tedarikçilerle iş birliği fırsatlarını da değerlendirir. Kalite
+              standartlarımızı karşılayan yerel üretici ve tedarikçilerle geliştirilecek anlaşmalar sayesinde
+              lojistik maliyetlerinin azaltılması, satın alma koşullarının iyileştirilmesi ve işletme kârlılığının
+              desteklenmesi hedeflenir.&rdquo;
+            </p>
+          </div>
 
-            {/* Slider 1: Günlük Müşteri */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-semibold">
-                <span className="text-[#5A4F44]">Günlük Ortalama Müşteri:</span>
-                <span className="text-[#20150F] font-bold text-sm">{dailyCustomers} Kişi / Gün</span>
-              </div>
-              <input
-                type="range"
-                min="100"
-                max="800"
-                step="10"
-                value={dailyCustomers}
-                onChange={(e) => setDailyCustomers(parseInt(e.target.value))}
-                className="w-full accent-[#C59A6F] cursor-pointer"
-              />
-              <div className="flex justify-between text-[10px] text-[#A5998D]">
-                <span>100 Kişi</span>
-                <span>450 Kişi (Ortalama)</span>
-                <span>800 Kişi</span>
-              </div>
-            </div>
-
-            {/* Slider 2: Ortalama Sepet */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-semibold">
-                <span className="text-[#5A4F44]">Ortalama Sepet Tutarı:</span>
-                <span className="text-[#20150F] font-bold text-sm">{avgTicket} ₺</span>
-              </div>
-              <input
-                type="range"
-                min="120"
-                max="350"
-                step="5"
-                value={avgTicket}
-                onChange={(e) => setAvgTicket(parseInt(e.target.value))}
-                className="w-full accent-[#C59A6F] cursor-pointer"
-              />
-              <div className="flex justify-between text-[10px] text-[#A5998D]">
-                <span>120 ₺ (Sadece Kahve)</span>
-                <span>200 ₺ (Kahve + Atıştırmalık)</span>
-                <span>350 ₺ (Gurme Menü)</span>
-              </div>
-            </div>
-
-            {/* Slider 3: Ürün Maliyeti (COGS %) */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-semibold">
-                <span className="text-[#5A4F44]">Ürün / Hammadde Maliyet Oranı:</span>
-                <span className="text-[#20150F] font-bold text-sm">%{cogsPercent}</span>
-              </div>
-              <input
-                type="range"
-                min="24"
-                max="38"
-                step="1"
-                value={cogsPercent}
-                onChange={(e) => setCogsPercent(parseInt(e.target.value))}
-                className="w-full accent-[#C59A6F] cursor-pointer"
-              />
-              <p className="text-[11px] text-[#8C7E72]">
-                Süt, kahve çekirdeği, ambalaj ve fırın malzeme hammadde oranı (%28 - %32 arası sektör standardıdır).
-              </p>
-            </div>
-
-            {/* 3 Column Grid for Monthly Costs */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold text-[#73675C] uppercase tracking-wider block">
-                  Aylık Kira (₺)
-                </label>
-                <input
-                  type="number"
-                  step="5000"
-                  value={monthlyRent}
-                  onChange={(e) => setMonthlyRent(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] text-xs font-bold text-[#20150F] focus:outline-none"
-                />
+          {/* Bağlantılı Tedarikçi, Mağaza ve Müşteri Akışı (Connected Workflow Diagram) */}
+          <div className="relative z-10 p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-4">
+            <span className="text-[11px] uppercase tracking-widest text-[#C59A6F] font-semibold block">
+              Tedarik ve Verimlilik Entegrasyonu
+            </span>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="p-4 rounded-xl bg-[#2E1F18] border border-[#443024] space-y-2 relative">
+                <span className="text-[10px] font-mono text-[#C59A6F] uppercase tracking-wider block">01 / Başlangıç</span>
+                <h4 className="font-serif-luxury text-base font-bold text-white">Yerel Üretici</h4>
+                <p className="text-[11px] text-[#A5998D] leading-relaxed">
+                  Taze süt, unlu mamuller ve yerel taze ürünler için bölge üreticileri belirlenir.
+                </p>
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold text-[#73675C] uppercase tracking-wider block">
-                  Personel Gideri (₺)
-                </label>
-                <input
-                  type="number"
-                  step="5000"
-                  value={monthlyStaff}
-                  onChange={(e) => setMonthlyStaff(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] text-xs font-bold text-[#20150F] focus:outline-none"
-                />
+              <div className="p-4 rounded-xl bg-[#2E1F18] border border-[#443024] space-y-2 relative">
+                <span className="text-[10px] font-mono text-[#C59A6F] uppercase tracking-wider block">02 / Kontrol</span>
+                <h4 className="font-serif-luxury text-base font-bold text-white">Merkez Kalite Onayı</h4>
+                <p className="text-[11px] text-[#A5998D] leading-relaxed">
+                  Numuneler analiz edilir, HACCP ve gıda standartlarına uygunluk testinden geçer.
+                </p>
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold text-[#73675C] uppercase tracking-wider block">
-                  Diğer Giderler (₺)
-                </label>
-                <input
-                  type="number"
-                  step="2000"
-                  value={monthlyOther}
-                  onChange={(e) => setMonthlyOther(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] text-xs font-bold text-[#20150F] focus:outline-none"
-                  title="Elektrik, su, muhasebe, temizlik"
-                />
+              <div className="p-4 rounded-xl bg-[#2E1F18] border border-[#443024] space-y-2 relative">
+                <span className="text-[10px] font-mono text-[#C59A6F] uppercase tracking-wider block">03 / Uygulama</span>
+                <h4 className="font-serif-luxury text-base font-bold text-white">Renn Şubesi</h4>
+                <p className="text-[11px] text-[#A5998D] leading-relaxed">
+                  Düşük nakliye maliyeti, taze hammadde ve optimize edilmiş işletme kârlılığı.
+                </p>
               </div>
-            </div>
 
-            {/* Initial Investment field */}
-            <div className="pt-2">
-              <div className="flex justify-between text-xs font-semibold mb-1">
-                <span className="text-[#5A4F44]">Tahmini Başlangıç Yatırım Tutarı (₺):</span>
-                <span className="text-[#20150F] font-bold">{formatTL(initialInvestment)}</span>
+              <div className="p-4 rounded-xl bg-[#2E1F18] border border-[#443024] space-y-2 relative">
+                <span className="text-[10px] font-mono text-[#C59A6F] uppercase tracking-wider block">04 / Sonuç</span>
+                <h4 className="font-serif-luxury text-base font-bold text-white">Mutlu Misafir</h4>
+                <p className="text-[11px] text-[#A5998D] leading-relaxed">
+                  Günün her saati standart yüksek lezzet, taze sunum ve sürdürülebilir müşteri sadakati.
+                </p>
               </div>
-              <input
-                type="number"
-                step="100000"
-                value={initialInvestment}
-                onChange={(e) => setInitialInvestment(Math.max(0, parseInt(e.target.value) || 0))}
-                className="w-full px-4 py-2.5 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] text-xs font-bold text-[#20150F] focus:outline-none"
-                placeholder="Örn: 3.500.000 ₺"
-              />
-              <span className="text-[10px] text-[#A5998D] block mt-1">
-                Geri dönüş süresi (ROI) bu tutar üzerinden hesaplanacaktır.
-              </span>
             </div>
           </div>
 
-          {/* Results Column (Right) */}
-          <div className="lg:col-span-6 bg-[#FAF7F2] rounded-2xl p-6 sm:p-8 border border-[#EAE1D5] flex flex-col justify-between space-y-6">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-[#E3D6C8]">
-                <h3 className="font-serif-luxury text-xl font-bold text-[#20150F]">
-                  Hesaplanan Finansal Göstergeler
-                </h3>
-                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-[#EFE6DC] text-[#8C6239]">
-                  Demo / Simülasyon
-                </span>
-              </div>
-
-              {/* 2 Main Big Number Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-5 rounded-2xl bg-white border border-[#E3D6C8] shadow-xs space-y-1">
-                  <span className="text-[11px] uppercase tracking-wider text-[#73675C] font-semibold block">
-                    Tahmini Aylık Ciro
-                  </span>
-                  <p className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#20150F]">
-                    {formatTL(monthlyRevenue)}
-                  </p>
-                  <span className="text-[10px] text-[#A5998D] block">
-                    {operatingDays} gün × {dailyCustomers} kişi
-                  </span>
+          {/* Dört Avantaj Kartı */}
+          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {localSupplyAdvantages.map((adv, aIdx) => (
+              <div
+                key={aIdx}
+                className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#C59A6F]/50 transition-all duration-300 space-y-3"
+              >
+                <div className="w-8 h-8 rounded-lg bg-[#C59A6F]/20 text-[#C59A6F] flex items-center justify-center font-bold text-xs">
+                  0{aIdx + 1}
                 </div>
+                <h4 className="font-serif-luxury text-lg font-bold text-white">{adv.title}</h4>
+                <p className="text-xs text-[#BFAFA0] leading-relaxed">{adv.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
+        {/* 3. SÖZLEŞME VE TEDARİK POLİTİKASI */}
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#E3D6C8] shadow-xl space-y-10">
+          <div className="max-w-3xl space-y-3">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#C59A6F] font-semibold flex items-center gap-2">
+              <Scale size={14} />
+              <span>SÖZLEŞME VE TEDARİK POLİTİKASI</span>
+            </span>
+            <h3 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#20150F]">
+              Ticari Koşullar Başından İtibaren Açık.
+            </h3>
+            <p className="text-xs sm:text-sm text-[#5A4F44] leading-relaxed">
+              &ldquo;Renn Coffee franchise modelinde ücretlendirme, yatırım yükümlülükleri ve tedarik koşulları
+              sözleşme öncesinde yatırımcıya açıklanır. Uygun ürün kategorilerinde yerel tedarikçilerle çalışma
+              imkânı değerlendirilerek kalite standartlarının korunması ve işletme maliyetlerinin optimize
+              edilmesi amaçlanır.&rdquo;
+            </p>
+          </div>
+
+          {/* 5 Policy Items Accordion / Cards */}
+          <div className="space-y-3">
+            {policyItems.map((item, pIdx) => {
+              const isOpen = openPolicyIndex === pIdx;
+              return (
                 <div
-                  className={`p-5 rounded-2xl border shadow-xs space-y-1 ${
-                    monthlyProfit >= 0
-                      ? "bg-white border-emerald-300"
-                      : "bg-red-50 border-red-200"
-                  }`}
+                  key={pIdx}
+                  className="rounded-2xl border border-[#EAE1D5] bg-[#FAF7F2] overflow-hidden transition-all"
                 >
-                  <span className="text-[11px] uppercase tracking-wider text-[#73675C] font-semibold block">
-                    Aylık Faaliyet Sonucu (EBITDA)
-                  </span>
-                  <p
-                    className={`font-serif-luxury text-2xl sm:text-3xl font-bold ${
-                      monthlyProfit >= 0 ? "text-emerald-700" : "text-red-600"
-                    }`}
+                  <button
+                    type="button"
+                    onClick={() => setOpenPolicyIndex(isOpen ? null : pIdx)}
+                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#F4EFE6] transition-colors"
                   >
-                    {formatTL(monthlyProfit)}
-                  </p>
-                  <span className="text-[10px] text-[#5A4F44] block">
-                    Faaliyet Marjı: <strong>%{profitMargin}</strong>
-                  </span>
-                </div>
-              </div>
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-full bg-[#20150F] text-[#FAF7F2] text-[10px] font-bold flex items-center justify-center shrink-0">
+                          {pIdx + 1}
+                        </span>
+                        <h4 className="font-serif-luxury text-base sm:text-lg font-bold text-[#20150F]">
+                          {item.title}
+                        </h4>
+                      </div>
+                      <p className="text-xs text-[#73675C] pl-8.5">{item.summary}</p>
+                    </div>
+                    <div className="shrink-0 text-[#8C6239] p-1 rounded-full bg-white border border-[#DECDBB]">
+                      {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    </div>
+                  </button>
 
-              {/* Break-even & Payback Metrics */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                <div className="p-4 rounded-xl bg-white border border-[#E3D6C8]">
-                  <span className="text-[#73675C] block">Başabaş Ciro Eşiği:</span>
-                  <span className="font-bold text-[#20150F] text-base mt-0.5 block">
-                    {formatTL(breakEvenRevenue)}
-                  </span>
-                  <p className="text-[10px] text-[#A5998D] mt-1">
-                    Bu ciro seviyesinde işletme ne kâr ne zarar eder.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-white border border-[#E3D6C8]">
-                  <span className="text-[#73675C] block">Tahmini Geri Dönüş (ROI):</span>
-                  {paybackMonths ? (
-                    <span className="font-bold text-[#A5784C] text-base mt-0.5 block">
-                      Yaklaşık {paybackMonths} Ay
-                    </span>
-                  ) : (
-                    <span className="font-semibold text-red-500 text-sm mt-0.5 block">
-                      Faaliyet sonucu pozitif olmalı
-                    </span>
-                  )}
-                  <p className="text-[10px] text-[#A5998D] mt-1">
-                    Başlangıç yatırımının aylık kâr ile amortisman süresi.
-                  </p>
-                </div>
-              </div>
-
-              {/* Visual Expense Breakdown Bar */}
-              <div className="space-y-2 pt-2">
-                <div className="flex justify-between text-xs font-semibold text-[#5A4F44]">
-                  <span>Gider ve Kâr Dağılımı:</span>
-                  <span>Toplam Ciro: %100</span>
-                </div>
-
-                <div className="h-4 rounded-full overflow-hidden flex bg-gray-200">
-                  <div
-                    style={{ width: `${Math.min(cogsPercent, 100)}%` }}
-                    className="bg-[#A5784C]"
-                    title={`Ürün Maliyeti: %${cogsPercent}`}
-                  />
-                  <div
-                    style={{
-                      width: `${Math.min((monthlyStaff / monthlyRevenue) * 100, 100)}%`
-                    }}
-                    className="bg-[#C59A6F]"
-                    title="Personel Gideri"
-                  />
-                  <div
-                    style={{
-                      width: `${Math.min((monthlyRent / monthlyRevenue) * 100, 100)}%`
-                    }}
-                    className="bg-[#8C6239]"
-                    title="Kira Gideri"
-                  />
-                  <div
-                    style={{ width: `${Math.min(royaltyPercent, 100)}%` }}
-                    className="bg-[#443024]"
-                    title="Royalty & Pazarlama"
-                  />
-                  {monthlyProfit > 0 && (
-                    <div
-                      style={{ width: `${Math.min(parseFloat(profitMargin), 100)}%` }}
-                      className="bg-emerald-600"
-                      title="Net Faaliyet Kârı"
-                    />
+                  {isOpen && (
+                    <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs text-[#5A4F44] leading-relaxed border-t border-[#EAE1D5] bg-white">
+                      <p className="pl-8.5">{item.desc}</p>
+                    </div>
                   )}
                 </div>
+              );
+            })}
+          </div>
 
-                <div className="flex flex-wrap items-center gap-3 text-[10px] text-[#73675C] pt-1">
-                  <span className="flex items-center gap-1">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#A5784C]" /> Hammadde
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#C59A6F]" /> Personel
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#8C6239]" /> Kira
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#443024]" /> Royalty (%{royaltyPercent})
-                  </span>
-                  {monthlyProfit > 0 && (
-                    <span className="flex items-center gap-1 text-emerald-800 font-bold">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-600" /> Faaliyet Kârı (%{profitMargin})
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Print & Action Buttons */}
-            <div className="pt-4 border-t border-[#E3D6C8] flex flex-col sm:flex-row items-center justify-between gap-3">
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-semibold bg-white border border-[#DECDBB] text-[#20150F] hover:bg-[#FAF7F2] transition-colors flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Printer size={14} />
-                <span>Simülasyonu Yazdır / PDF</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  setFormData((prev) => ({
-                    ...prev,
-                    message: `Simülatör Tercihleri: ${dailyCustomers} müşteri/gün, ${avgTicket} ₺ sepet, ${formatTL(
-                      monthlyRevenue
-                    )} ciro hedefi.`
-                  }));
-                  scrollToSection("basvuru");
-                }}
-                className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold bg-[#20150F] text-[#FAF7F2] hover:bg-[#C59A6F] hover:text-[#20150F] transition-all cursor-pointer"
-              >
-                Bu Senaryo İle Başvur
-              </button>
-            </div>
+          {/* Sözleşme Yasal Bilgilendirme */}
+          <div className="p-4.5 rounded-2xl bg-[#F7F2EB] border border-[#DECDBB] text-xs text-[#73675C] flex items-start gap-3">
+            <Info size={16} className="text-[#C59A6F] shrink-0 mt-0.5" />
+            <p className="leading-relaxed">
+              <strong>Yasal Not:</strong> Bu açıklamalar franchise sözleşmesinin yerine geçmez. Nihai kurallar,
+              ticari hak ve yükümlülükler taraflarca imzalanan onaylı franchise sözleşmesine uygun biçimde yürütülür.
+              Yerel tedarikçi kullanımı merkezi kalite onayı ve sözleşme şartlarına tabidir.
+            </p>
           </div>
         </div>
 
-        {/* Mandatory Transparency Disclaimer */}
-        <div className="mt-6 p-4 rounded-2xl bg-[#F4EFE6] border border-[#DECDBB] text-xs text-[#73675C] space-y-1">
-          <div className="flex items-center gap-2 text-[#20150F] font-bold">
-            <Info size={15} className="text-[#C59A6F]" />
-            <span>Yasal Bilgilendirme ve Senaryo Uyarısı</span>
-          </div>
-          <p className="leading-relaxed">
-            Bu hesaplama yalnızca senaryo analizi ve simülasyon amacıyla hazırlanmıştır. Gerçek yatırım tutarları, gelirler,
-            giderler ve yatırımın geri dönüş süresi lokasyona, dönemsel enflasyona, ürün miksine ve işletme koşullarına göre
-            değişiklik gösterebilir. Sonuçlar herhangi bir kazanç veya kârlılık taahhüdü niteliğinde değildir. Demo /
-            Varsayımsal modeldir.
+        {/* 5. SON VURGU */}
+        <div className="text-center max-w-4xl mx-auto py-12 px-6 rounded-3xl bg-gradient-to-b from-[#F4EFE6] to-[#FAF7F2] border border-[#DECDBB] space-y-4 shadow-sm">
+          <span className="text-[11px] uppercase tracking-[0.25em] text-[#C59A6F] font-bold block">
+            RENN ORTAKLIK VİZYONU
+          </span>
+          <h3 className="font-serif-luxury text-2xl sm:text-4xl lg:text-5xl font-bold text-[#20150F] leading-tight">
+            &ldquo;Bizim İçin İyi Bir Franchise, Yalnızca Açılan Yeni Bir Mağaza Değil; Sağlıklı Büyüyen Bir İşletmedir.&rdquo;
+          </h3>
+          <p className="text-xs sm:text-sm text-[#73675C] max-w-2xl mx-auto leading-relaxed">
+            Renn Coffee, yatırımcılarıyla şeffaflık, operasyonel verimlilik ve uzun vadeli iş ortaklığı anlayışıyla büyümeyi hedefler.
           </p>
         </div>
       </section>
@@ -2122,14 +1984,14 @@ export default function FranchisePage() {
                       onChange={(e) => setFormData({ ...formData, concept: e.target.value })}
                       className="w-full px-4 py-3.5 rounded-xl bg-[#FAF7F2] border border-[#DECDBB] text-sm font-medium text-[#20150F] focus:outline-none"
                     >
-                      <option value="RENN START (Kompakt Nokta • 40-75 m²)">
-                        1. RENN START (Kompakt Take-Away Noktası • 40-75 m²)
+                      <option value="RENN START (Standart Mağaza • 150-250 m²)">
+                        1. RENN START (Standart Kahve Mağazası • 150-250 m²)
                       </option>
-                      <option value="RENN COFFEE (Klasik Mağaza • 90-160 m²)">
-                        2. RENN COFFEE (Klasik Cadde & Deneyim Mağazası • 90-160 m²)
+                      <option value="RENN COFFEE (Geniş Mağaza • 250-350 m²)">
+                        2. RENN COFFEE (Geniş Deneyim Mağazası • 250-350 m²)
                       </option>
-                      <option value="RENN FLAGSHIP (Müstakil Villa & Roastery • 250+ m²)">
-                        3. RENN FLAGSHIP (Müstakil Villa & Roastery Lab • 250+ m²)
+                      <option value="RENN FLAGSHIP (Müstakil Villa & Roastery • 250 m²+)">
+                        3. RENN FLAGSHIP (Müstakil Villa & Roastery • 250 m²+)
                       </option>
                     </select>
                   </div>
@@ -2391,6 +2253,79 @@ export default function FranchisePage() {
           </div>
         </div>
       </section>
+
+      {/* =========================================================================
+          YATIRIM KALEMLERİNİ İNCELE MODAL
+         ========================================================================= */}
+      {showInvestmentItemsModal && (
+        <div
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+          onClick={() => setShowInvestmentItemsModal(false)}
+        >
+          <div
+            className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 md:p-10 border border-[#E3D6C8] shadow-2xl space-y-6 relative my-8 max-h-[90vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowInvestmentItemsModal(false)}
+              className="absolute top-5 right-5 p-2 rounded-full hover:bg-[#FAF7F2] text-[#73675C] cursor-pointer"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-2xl bg-[#FAF7F2] border border-[#DECDBB] text-[#C59A6F] flex items-center justify-center shrink-0">
+                <FileText size={22} />
+              </div>
+              <div>
+                <span className="text-[10px] uppercase tracking-widest text-[#C59A6F] font-bold block">
+                  ŞEFFAF MALİYET YAPISI
+                </span>
+                <h3 className="font-serif-luxury text-2xl font-bold text-[#20150F]">
+                  Renn Coffee Yatırım Kalemleri
+                </h3>
+              </div>
+            </div>
+
+            <p className="text-xs text-[#6B6056] leading-relaxed">
+              Franchise sürecinde tüm maliyetler kalem kalem incelenir; sürpriz masraf ve gizlenmiş giderlere
+              yer verilmez. Üçüncü taraflara yapılacak kurulum ödemeleri ile marka bedelleri ayrıştırılır.
+            </p>
+
+            {/* Scrollable list of 9 items */}
+            <div className="overflow-y-auto pr-1 space-y-3.5 divide-y divide-[#F0E6D8]">
+              {investmentCostItems.map((item, idx) => (
+                <div key={idx} className="pt-3.5 first:pt-0 space-y-1">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-[11px] font-mono font-bold text-[#C59A6F]">{item.no}.</span>
+                    <h4 className="font-serif-luxury text-base font-bold text-[#20150F]">
+                      {item.title}
+                    </h4>
+                  </div>
+                  <p className="text-xs text-[#5A4F44] pl-5 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Note & Action */}
+            <div className="pt-4 border-t border-[#F0E6D8] flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+              <span className="text-[11px] text-[#8C7E72] text-center sm:text-left">
+                * Detaylı bütçe dökümü lokasyon fizibilitesi sonrası sözleşme eki olarak sunulur.
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowInvestmentItemsModal(false);
+                  scrollToSection("basvuru");
+                }}
+                className="w-full sm:w-auto px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold bg-[#20150F] text-[#FAF7F2] hover:bg-[#C59A6F] hover:text-[#20150F] transition-all cursor-pointer"
+              >
+                Franchise Başvurusu Yap
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* =========================================================================
           INVESTOR DECK / DOSYA TALEP MODAL
