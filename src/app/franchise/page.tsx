@@ -230,7 +230,7 @@ export default function FranchisePage() {
       locations: "AVM içi ve food court girişleri, metro ve aktarma aksları, plazalar, hastaneler ve yoğun yaya caddeleri.",
       summary:
         "150 - 250 m² aralığındaki mağaza alanlarında hızlı sipariş döngüsü ve ergonomik bar mimarisi ile yüksek operasyonel verimlilik sağlayan standart dükkan konsepti. Hem paket servis hem de konforlu oturum alanını dengeler.",
-      image: "/venue/cup.jpg",
+      image: "/venue/venue-winter-garden.jpg",
       features: [
         "150 – 250 m² optimize edilmiş mağaza ve ferah oturma alanı",
         "2 kişilik yüksek hızlı ergonomik espresso istasyonu",
@@ -249,7 +249,7 @@ export default function FranchisePage() {
       locations: "Şehrin popüler ana caddeleri, üniversite yerleşke aksları, gastronomi çarşıları ve seçkin konut çevreleri.",
       summary:
         "Markamızın amiral ruhunu yansıtan klasik üçüncü nesil kahve deneyimi. 250 - 350 m² ferah alanda Antik Mısır rölyef dokuları, konforlu çalışma ve sohbet alanları, tam barista kahve reçeteleri, özel panini ve taze pastane lezzetleri.",
-      image: "/venue/wall.jpg",
+      image: "/venue/venue-storefront.jpg",
       features: [
         "250 – 350 m² geniş iç mekân ve açık hava bahçe / teras oturumu",
         "Tam teşekküllü barista barı ve özel demleme köşesi",
@@ -268,7 +268,7 @@ export default function FranchisePage() {
       locations: "Bağımsız ticari villalar, tarihi taş köşkler, prestijli sahil bulvarları ve geniş bahçeli serbest yapılar.",
       summary:
         "Şehrin ikonik buluşma noktası olmaya aday prestij yatırımı. 250 m² ve üzeri bağımsız ticari villalarda şube içi özel kahve kavurma (Roastery Lab) alanı, atölyeler, VIP toplantı odaları ve geniş antik Mısır mimari peyzajlı avlu.",
-      image: "/brand/renn-manor-hero.jpg",
+      image: "/venue/venue-garden-palms.jpg",
       features: [
         "250 m² ve üzeri müstakil bahçe, su havuzları ve antik Mısır sütunlu avlu",
         "Roastery & Coffee Lab: Yerinde çekirdek kavurma ve tadım workshopları",
@@ -917,8 +917,8 @@ export default function FranchisePage() {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-[#443024] shadow-2xl aspect-[4/5] bg-[#2E1F18] group">
               <Image
-                src="/brand/renn-manor-hero.jpg"
-                alt="Renn Coffee Flagship Mimari"
+                src="/venue/venue-relief-wall.jpg"
+                alt="Renn Coffee Anubis & Bastet Sandstone Duvar Rölyefi"
                 fill
                 priority
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

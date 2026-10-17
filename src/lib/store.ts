@@ -179,7 +179,10 @@ export async function getBranches(): Promise<Branch[]> {
     const local = localStorage.getItem("renn_branches");
     if (local) {
       try {
-        return JSON.parse(local);
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0 && parsed[0].gallery && parsed[0].gallery.length >= 10) {
+          return parsed;
+        }
       } catch (e) {}
     }
   }

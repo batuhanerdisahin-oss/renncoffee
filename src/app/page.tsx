@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RennHeroManorScroll from "@/components/RennHeroManorScroll";
@@ -137,9 +138,99 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
+          ATMOSPHERE & VENUE HIGHLIGHT STRIP (REAL PHOTOS)
+         ========================================================================= */}
+      <section className="py-12 sm:py-16 px-5 sm:px-8 max-w-7xl mx-auto">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <span className="text-[11px] uppercase tracking-[0.25em] text-[#C59A6F] font-semibold">
+              KAYSERİ ROASTERY & YAŞAM ALANI
+            </span>
+            <h2 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#20150F] mt-1">
+              Antik Mısır Dinginliği, Modern Bohem Atmosfer
+            </h2>
+          </div>
+          <Link
+            href="/subelerimiz"
+            className="text-xs uppercase tracking-widest font-semibold text-[#A5784C] hover:text-[#20150F] transition-colors flex items-center gap-1.5 group shrink-0"
+          >
+            <span>Tüm Galeriyi İncele (18 Fotoğraf)</span>
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+
+        {/* 4 Featured Photos Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          <Link
+            href="/subelerimiz"
+            className="group relative aspect-[4/5] rounded-2xl overflow-hidden border border-[#E6DED4] shadow-sm bg-[#20150F]"
+          >
+            <Image
+              src="/venue/venue-storefront.jpg"
+              alt="Renn Coffee Ön Cephe & Giriş"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3.5 sm:p-4">
+              <span className="text-[10px] uppercase tracking-wider text-[#C59A6F] font-semibold">Giriş Cephesi</span>
+              <p className="text-xs sm:text-sm font-semibold text-white">Altın Hiyeroglif Tabela</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/subelerimiz"
+            className="group relative aspect-[4/5] rounded-2xl overflow-hidden border border-[#E6DED4] shadow-sm bg-[#20150F]"
+          >
+            <Image
+              src="/venue/venue-pyramid-sphinx.jpg"
+              alt="Gize Piramitleri ve Sfenks Rölyefi"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3.5 sm:p-4">
+              <span className="text-[10px] uppercase tracking-wider text-[#C59A6F] font-semibold">Mistik Rölyef</span>
+              <p className="text-xs sm:text-sm font-semibold text-white">Gize Piramitleri & Sfenks</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/subelerimiz"
+            className="group relative aspect-[4/5] rounded-2xl overflow-hidden border border-[#E6DED4] shadow-sm bg-[#20150F]"
+          >
+            <Image
+              src="/venue/venue-garden-palms.jpg"
+              alt="Palmiye Bahçesi ve Açık Alan"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3.5 sm:p-4">
+              <span className="text-[10px] uppercase tracking-wider text-[#C59A6F] font-semibold">Açık Hava Avlusu</span>
+              <p className="text-xs sm:text-sm font-semibold text-white">Beyaz Çakıllı Palmiyeler</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/subelerimiz"
+            className="group relative aspect-[4/5] rounded-2xl overflow-hidden border border-[#E6DED4] shadow-sm bg-[#20150F]"
+          >
+            <Image
+              src="/venue/venue-fireplace.jpg"
+              alt="Şömineli Bohem Lounge"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3.5 sm:p-4">
+              <span className="text-[10px] uppercase tracking-wider text-[#C59A6F] font-semibold">Bohem Lounge</span>
+              <p className="text-xs sm:text-sm font-semibold text-white">Şömineli Dinlenme Köşesi</p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* =========================================================================
           MINIMAL FRANCHISE REDIRECTION SECTION (VURUCU YATIRIMCI DAVETİ)
          ========================================================================= */}
-      <section className="py-20 sm:py-28 px-5 sm:px-8 max-w-7xl mx-auto">
+      <section className="py-16 sm:py-24 px-5 sm:px-8 max-w-7xl mx-auto">
         <div className="rounded-3xl sm:rounded-[2.5rem] bg-white border border-[#E3D6C8] p-8 sm:p-14 lg:p-20 relative overflow-hidden shadow-lg flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           {/* Text Content */}
           <div className="max-w-2xl space-y-4">
@@ -159,13 +250,13 @@ export default function HomePage() {
             {/* 3 Concepts Summary Pills */}
             <div className="flex flex-wrap gap-2.5 pt-2">
               <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#FAF7F2] border border-[#DECDBB] text-[#20150F]">
-                1. Renn Express (Standart Dükkan • 80-120 m²)
+                1. Renn Start (Standart Dükkan • 150 – 250 m²)
               </span>
               <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#FAF7F2] border border-[#DECDBB] text-[#20150F]">
-                2. Renn Lounge (Büyük Dükkan & Kış Bahçesi • 150-250 m²)
+                2. Renn Coffee (Büyük Dükkan & Teras • 250 – 350 m²)
               </span>
               <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#FAF7F2] border border-[#DECDBB] text-[#20150F]">
-                3. Renn Manor (Müstakil Ticari Villa • 300+ m²)
+                3. Renn Flagship (Müstakil Ticari Villa • 250 m² +)
               </span>
             </div>
           </div>

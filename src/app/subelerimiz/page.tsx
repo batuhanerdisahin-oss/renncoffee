@@ -15,7 +15,9 @@ import {
   Sparkles,
   Share2,
   Navigation,
-  CheckCircle2
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
 export default function SubelerimizPage() {
@@ -58,7 +60,7 @@ export default function SubelerimizPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Left: Gallery & Cover Image */}
           <div className="lg:col-span-7 flex flex-col gap-4">
-            <div className="relative aspect-[16/10] w-full rounded-3xl overflow-hidden shadow-lg border border-[#E3D6C8] bg-[#20150F]">
+            <div className="relative aspect-[16/10] w-full rounded-3xl overflow-hidden shadow-lg border border-[#E3D6C8] bg-[#20150F] group">
               <Image
                 src={selectedBranch.gallery[activeImageIndex] || selectedBranch.image}
                 alt={selectedBranch.name}
@@ -69,6 +71,33 @@ export default function SubelerimizPage() {
               <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#20150F]/80 text-[#FAF7F2] backdrop-blur-md">
                 {selectedBranch.district} / {selectedBranch.city}
               </div>
+
+              {/* Counter */}
+              {selectedBranch.gallery.length > 1 && (
+                <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium bg-[#20150F]/80 text-[#FAF7F2] backdrop-blur-md">
+                  {activeImageIndex + 1} / {selectedBranch.gallery.length}
+                </div>
+              )}
+
+              {/* Navigation Arrows */}
+              {selectedBranch.gallery.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setActiveImageIndex((prev) => (prev > 0 ? prev - 1 : selectedBranch.gallery.length - 1))}
+                    aria-label="Önceki Fotoğraf"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-[#C59A6F] text-white flex items-center justify-center backdrop-blur-md opacity-80 group-hover:opacity-100 transition-all cursor-pointer shadow-lg"
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button
+                    onClick={() => setActiveImageIndex((prev) => (prev < selectedBranch.gallery.length - 1 ? prev + 1 : 0))}
+                    aria-label="Sonraki Fotoğraf"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-[#C59A6F] text-white flex items-center justify-center backdrop-blur-md opacity-80 group-hover:opacity-100 transition-all cursor-pointer shadow-lg"
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Thumbnail Gallery */}
